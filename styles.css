@@ -1,7 +1,69 @@
+/* --- NEW CINEMATIC BACKGROUND STYLES --- */
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -10; /* Put it far back */
+    transition: opacity 2s ease-out; /* Fade-out transition */
+}
+
+#background-video.fade-out {
+    opacity: 0;
+}
+
+#video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4); /* Subtle darkness to help text readability */
+    z-index: -5; /* Above the video */
+    transition: opacity 2s ease-out; /* Fade-out transition */
+}
+
+#video-overlay.fade-out {
+    opacity: 0;
+}
+
+#main-content {
+    /* Set back to flow context after initial hidden state */
+    position: relative;
+    z-index: 10;
+    transition: opacity 2s ease-in; 
+}
+
+.hidden-content {
+    opacity: 0;
+    visibility: hidden;
+    /* Use fixed positioning to prevent scrolling and interaction during video play */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* This background is crucial for when the video is gone */
+    background: linear-gradient(135deg, #0a192f 80%, #112240 100%);
+    transition: opacity 2s ease-in, visibility 0s 2s; 
+}
+
+.fade-in-content {
+    opacity: 1;
+    visibility: visible;
+    position: relative; 
+    min-height: 100vh;
+}
+/* --- END NEW STYLES --- */
+
+
 body {
     margin: 0;
     font-family: 'Roboto', Arial, sans-serif;
-    background: linear-gradient(135deg, #0a192f 80%, #112240 100%);
+    /* Changed to solid dark color, as #main-content handles the gradient now */
+    background: #0a192f;
     color: #f1f1f1;
     min-height: 100vh;
 }
